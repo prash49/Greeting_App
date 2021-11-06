@@ -1,13 +1,13 @@
-package com.brigelabz.demo;
+package com.bridgelabz.greetingapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class GreetingAppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(GreetingAppApplication.class, args);
     }
 
 }
