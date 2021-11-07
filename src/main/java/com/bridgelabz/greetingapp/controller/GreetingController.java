@@ -54,6 +54,7 @@ public class GreetingController {
     public String greetingMessage(@RequestBody UserDto userDto) {
         return greetingService.greetingMessageByName(userDto);
     }
+
     @GetMapping("/find")
     public User findGreetById(@RequestParam long id) {
         return greetingService.getById(id);
@@ -62,6 +63,12 @@ public class GreetingController {
     @GetMapping("/allgreetings")
     public List<User> findAllGreeting() {
         return greetingService.getAllGreetingMessages();
+    }
+
+    @PutMapping("/editmessage/{id}")
+    public User editGreetMesage(@PathVariable long id, @RequestBody UserDto userDto) {
+        return greetingService.updateGreetMessage(id, userDto);
+
     }
 
 }
