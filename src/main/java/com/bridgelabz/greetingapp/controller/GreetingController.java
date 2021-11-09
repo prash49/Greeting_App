@@ -11,17 +11,21 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping("greetingapp")
 public class GreetingController {
 
     private static final String template = "Hello, %s!";
-    private static final String template2 = "Hello, %s , %s!";
     private final AtomicLong counter = new AtomicLong();
+
+    @Autowired
+    IGreetingService greetingService;
+
 
     /*
      *curl localhost:8080/greeting
      @return={id =1 , content="hello world!}
      * curllocalhost:8080/greeting?name=prashanth
-     * @return= { id=2, content="hello prashanth!
+     * @return= { id=2, content="hello prashanth!"
      */
     @GetMapping(value = {"/greeting", "/greeting/", "/greeting/home"})
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -37,8 +41,6 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
-    @Autowired
-    private IGreetingService greetingService;
 
     /*
        *curl localhost:8080/greeting/service
